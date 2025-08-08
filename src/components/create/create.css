@@ -1,50 +1,99 @@
 .newPost {
-  margin-top: 50px;
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-.newPost .container {
-  max-width: 50%;
-}
-.newPost i {
-  font-size: 25px;
-  margin-right: 20px;
-  margin-top: -20px;
-}
-.newPost img {
+
+.create {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  max-width: 1000px;
 }
-.newPost .img {
-  position: relative;
+
+.form {
+  background: white ;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15);
 }
-.newPost form {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-shadow: none;
-  border: none;
+
+.form-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
 }
-.newPost .inputfile input {
-  width: 100%;
-  height: 300px;
-  position: relative;
-  z-index: 2;
-  opacity: 0;
+
+.form-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
 }
-.newPost .inputfile label {
-  font-size: 30px;
-  color: #000;
-  margin-left: 0;
-  width: 100%;
-  display: block;
+
+.inputfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputfile label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fe090d;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
 }
-.newPost .img img {
-  /*position: absolute;
-  top: 0;
-  left: 0;*/
+
+.inputfile label:hover {
+  background: #821214;
+}
+
+input[type="text"],
+textarea {
   width: 100%;
-  height: 300px;
-  z-index: 1;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.button {
+  padding: 10px;
+  background: #173bdc;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  background: #4e2491;
+}
+
+.submitted-msg {
+  text-align: center;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.success-msg {
+  text-align: center;
+  color: #4caf50;
+  font-weight: bold;
 }

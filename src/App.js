@@ -8,12 +8,13 @@ import { Regsiter } from "./pages/login/Regsiter"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { DetailsPages } from "./pages/details/DetailsPages"
 import { Account } from "./pages/account/Account"
-import { Create } from "./components/create/Create"
+import Create from "./components/create/Create.jsx";
 import { Context } from "./context/Context"
 import { Jobs } from "./pages/jobs/jobs.jsx"
 import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
 import { Gallery } from "./pages/gallery/Gallery.jsx"
+
 
 const App = () => {
   //after login
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/account" element={<Account/>} />
           <Route path="/create" element={<Create/>} />
           <Route path="/gallery" element={<Gallery />} />
+
         </Routes>
         <Footer />
       </Router>
