@@ -23,7 +23,6 @@ import { Contact } from "./pages/contact/Contact.jsx"
 import { Privacy } from "./pages/privacy/Privacy.jsx"
 import { Terms } from "./pages/terms/Terms.jsx"
 import { Help } from "./pages/help/Help.jsx"
-import { About } from "./pages/about/About.jsx"
 
 
 const App = () => {
@@ -46,7 +45,7 @@ const App = () => {
           <Route path="/create" element={<Create/>} />
           <Route path="/gallery" element={<Gallery />} />
 
-          <Route path="/about" element={<About />} />
+        
 
           <Route path="/contact" element={<Contact />} />
 
