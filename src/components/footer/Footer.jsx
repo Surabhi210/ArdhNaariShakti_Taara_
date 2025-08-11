@@ -5,7 +5,23 @@ import { RiInstagramFill } from "react-icons/ri"
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
 import logo from "../../assets/images/logo.png"
 import "./footer.css"
+import { useNavigate } from 'react-router-dom';
 
+function QuickLinks() {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  return (
+    <ul className="footer-links">
+      <li onClick={() => handleClick('/')}>Home</li>
+      <li onClick={() => handleClick('/jobs')}>Jobs</li>
+      <li onClick={() => handleClick('/blogs')}>Blog</li>
+      <li onClick={() => handleClick('/shelter')}>Shelter</li>
+    </ul>
+  );
+}
 export const Footer = () => {
   return (
     <footer className="footer">
@@ -23,32 +39,25 @@ export const Footer = () => {
               Join us in creating a brighter future for all.
             </p>
             <div className="social-links">
-              <a href="#" className="social-link" aria-label="Facebook">
-                <BsFacebook />
-              </a>
-              <a href="#" className="social-link" aria-label="Instagram">
+              <a href="https://www.instagram.com/agarwal.vidu?igsh=MWI4d3Jvb2locmVvcQ==" className="social-link" aria-label="Instagram">
                 <RiInstagramFill />
               </a>
-              <a href="#" className="social-link" aria-label="Twitter">
+              <a href="https://x.com/Vidushit143?t=QhDahpmDpE9ZuLXw0MujSA&s=08" className="social-link" aria-label="Twitter">
                 <AiFillTwitterCircle />
               </a>
-              <a href="#" className="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/vidushi-agarwal-8958-developer?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+" className="social-link" aria-label="LinkedIn">
                 <AiFillLinkedin />
               </a>
 
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            <ul className="footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/jobs">Jobs</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/shelter">Shelter</a></li>
-            </ul>
-          </div>
+         {/* Quick Links */}
+<div className="footer-section">
+  <h4>Quick Links</h4>
+  <QuickLinks />
+</div>
 
           {/* Resources */}
           <div className="footer-section">
