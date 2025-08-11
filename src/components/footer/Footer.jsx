@@ -4,8 +4,27 @@ import { RiInstagramFill } from "react-icons/ri"
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
 import logo from "../../assets/images/logo.png"
 import "./footer.css"
+
 import { NavLink } from "react-router-dom"
 
+import { useNavigate } from 'react-router-dom';
+
+
+function QuickLinks() {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  return (
+    <ul className="footer-links">
+      <li onClick={() => handleClick('/')}>Home</li>
+      <li onClick={() => handleClick('/jobs')}>Jobs</li>
+      <li onClick={() => handleClick('/blogs')}>Blog</li>
+      <li onClick={() => handleClick('/shelter')}>Shelter</li>
+    </ul>
+  );
+}
 export const Footer = () => {
   return (
     <footer className="footer">
@@ -54,6 +73,7 @@ export const Footer = () => {
             </div>
           </div>
 
+
           {/* Quick Links */}
           <div className="footer-section">
             <h4>Quick Links</h4>
@@ -64,6 +84,13 @@ export const Footer = () => {
               <li><NavLink to="/shelter" className="nav-link">Shelter</NavLink></li>
             </ul>
           </div>
+
+         {/* Quick Links */}
+<div className="footer-section">
+  <h4>Quick Links</h4>
+  <QuickLinks />
+</div>
+
 
           {/* Resources */}
           <div className="footer-section">

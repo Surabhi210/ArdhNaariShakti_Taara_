@@ -15,6 +15,14 @@ import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
 import { Gallery } from "./pages/gallery/Gallery.jsx"
 
+import { Contact } from "./pages/contact/Contact.jsx"
+
+import { Privacy } from "./pages/privacy/Privacy.jsx"
+import { Terms } from "./pages/terms/Terms.jsx"
+import { Help } from "./pages/help/Help.jsx"
+import { About } from "./pages/about/About.jsx"
+
+
 const App = () => {
   //after login
   const { user } = useContext(Context)
@@ -34,6 +42,15 @@ const App = () => {
           <Route path="/account" element={<Account/>} />
           <Route path="/create" element={<Create/>} />
           <Route path="/gallery" element={<Gallery />} />
+
+          <Route path="/contact" element={<Contact />} />
+
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/about" element={<About />} />
+
+
         </Routes>
         <Footer />
       </Router>
