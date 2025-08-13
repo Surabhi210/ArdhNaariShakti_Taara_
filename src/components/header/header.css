@@ -5,6 +5,25 @@ header {
   position: relative;
   z-index: 44;
 }
+
+/* Logo + title layout */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-title {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #f62aa8, #1c90f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 /* nav */
 nav ul {
   display: flex;
@@ -99,6 +118,7 @@ nav a:hover::after {
 .openProfile button:hover {
   background: rgba(147, 75, 255, 0.075);
 }
+
 header.active {
   position: sticky;
   top: 0;
@@ -108,6 +128,7 @@ header.active {
   z-index: 9999;
   background: #ffa9cb;
 }
+
 @media screen and (max-width: 768px) {
   header .search {
     display: none;
