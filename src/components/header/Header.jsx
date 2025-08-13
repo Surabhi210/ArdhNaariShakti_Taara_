@@ -21,11 +21,13 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="scontainer flex">
-        <div className="logo">
+        <div className="logo-title">
           <Link to="/">
             <img src={logo} alt="logo" width="100px" />
           </Link>
+          <h1 className="project-title">ArdhNaariShakti</h1>
         </div>
+
         <nav>
           <ul>
             {nav.map((link) => (
@@ -53,6 +55,7 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
+
         <div className="account flexCenter">
           <User />
         </div>
