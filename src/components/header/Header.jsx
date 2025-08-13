@@ -25,7 +25,7 @@ export const Header = () => {
           <Link to="/">
             <img src={logo} alt="logo" width="100px" />
           </Link>
-          <h1 className="project-title">ArdhNaariShakti</h1>
+          <h1 className="project-title">ArdhNaariShakti Taara</h1>
         </div>
 
         <nav>
