@@ -9,7 +9,6 @@ import { Regsiter } from "./pages/login/Regsiter";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DetailsPages } from "./pages/details/DetailsPages";
 import { Account } from "./pages/account/Account";
-import Settings from "./pages/account/Settings";
 import { Create } from "./components/create/Create";
 import { Context } from "./context/Context";
 import { Jobs } from "./pages/jobs/jobs.jsx";
