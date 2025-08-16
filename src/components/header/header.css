@@ -70,6 +70,7 @@ header {
   cursor: pointer;
 }
 
+/* Navbar Buttons */
 .account button,
 .mobile-account button {
   font-size: 17px;
@@ -86,6 +87,107 @@ header {
 .account button:hover,
 .mobile-account button:hover {
   background-color: #eec7d6;
+}
+
+/* Navbar Avatar */
+.account {
+  position: relative; 
+}
+
+.account img,
+.mobile-account img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+.account-dropdown {
+  position: absolute;
+  top: 50px;  /* just below avatar */
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 10000;
+}
+
+.account-dropdown a {
+  padding: 10px 15px;
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+.account-dropdown a:hover {
+  background: #f6f6f6;
+}
+
+.account, .profile { 
+  position: relative; 
+  flex: 0 0 auto; 
+}
+
+.profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.openProfile {
+  position: absolute;
+  top: 48px;          
+  right: 0;
+  background: #fff;
+  min-width: 200px;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  z-index: 10050;
+  display: flex;
+  flex-direction: column;   
+  padding: 8px 0;
+}
+
+.openProfile .box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.openProfile .box + .box {
+  border-top: 1px solid #f3f3f3;
+}
+
+.openProfile .box:hover {
+  background: #fafafa;
+}
+
+
+.scontainer.flex.space-between { align-items: center; }
+.nav-menu ul { align-items: center; }
+
+
+@media (max-width: 768px) {
+  .openProfile { right: 150px; }
+}
+
+
+.account-dropdown.hidden {
+  display: none;
 }
 
 .desktop-account {
@@ -137,7 +239,6 @@ header.active {
     text-align: center;
   }
 
-
   .desktop-account {
     display: none !important;
   }
@@ -147,4 +248,83 @@ header.active {
     text-align: center;
     margin-top: 10px;
   }
+
+  .account-dropdown {
+    right: 50%; 
+    transform: translateX(50%); 
+  }
+}
+
+.profile {
+  position: relative; 
+  display: inline-block;
+}
+
+.profile .img img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+.openProfile {
+  position: absolute;
+  top: 50px;        
+  right: 0;          
+  left: auto;        
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 100px;
+  padding: 10px 0;
+  z-index: 10000;
+}
+
+
+.openProfile .box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 25px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.openProfile .image {
+  display: flex;
+  align-items: center;   
+  gap: 10px;             
+  padding: 10px 15px;
+}
+
+.openProfile .image .img img {
+  width: 40px;   
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.openProfile .image .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.openProfile .image .text h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.openProfile .image .text label {
+  font-size: 13px;
+  color: #555;
+}
+.openProfile .box:hover {
+  background: #f9f9f9;
 }
