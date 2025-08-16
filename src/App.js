@@ -24,6 +24,7 @@ import NotFound from "./pages/notfound/page.jsx"
 import { GoToTopButton } from "./components/goToTopButton/goToTopButton.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
+import ForgotPassword from './pages/login/ForgotPassword';
 
 const App = () => {
   //after login
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="*" element={<NotFound/>}/>
           <Route path="/music" element={<CalmingCorner/>} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
         <Footer />
         <GoToTopButton />
