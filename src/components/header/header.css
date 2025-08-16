@@ -68,6 +68,7 @@ header {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
+  color: #fff;
 }
 
 /* Navbar Buttons */
@@ -328,3 +329,4 @@ header.active {
 .openProfile .box:hover {
   background: #f9f9f9;
 }
+
