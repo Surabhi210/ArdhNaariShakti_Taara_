@@ -29,7 +29,7 @@ export const Header = () => {
         {/* Logo + Title */}
         <div className="logo-title">
           <Link to="/" onClick={closeMenu}>
-            <img src={logo} alt="logo" width="60px" />
+            <img src={logo} alt="logo" width="80px" />
           </Link>
           <h1 className="project-title">ArdhNaariShakti Taara</h1>
         </div>
@@ -67,14 +67,14 @@ export const Header = () => {
                 )}
               </li>
             ))}
-            {/* My Account for mobile menu */}
+            
             <li className="mobile-account">
               <User />
             </li>
           </ul>
         </nav>
 
-        {/* My Account for desktop */}
+       
         <div className="account flexCenter desktop-account">
           <User />
         </div>
