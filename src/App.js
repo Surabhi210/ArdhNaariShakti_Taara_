@@ -61,7 +61,7 @@ const App = () => {
         <Footer />
         <GoToTopButton />
       </Router>
-      <ToastContainer position="top-center" autoClose={2000} />
+      <ToastContainer position="top-center" autoClose={2000} className="toast-container-lower-zindex" />
     </>
   );
 };

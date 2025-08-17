@@ -11,9 +11,14 @@ import { FaTimes } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const User = ({ closeMobileMenu }) => {
+export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfileOpen: propSetProfileOpen, toggleProfileOnly, showProfileOnly, isMobile }) => {
   const { user, dispatch } = useContext(Context);
   const navigate = useNavigate();
+
+  const [localProfileOpen, setLocalProfileOpen] = useState(false);
+
+  const currentProfileOpen = isMobile ? propProfileOpen : localProfileOpen;
+  const currentSetProfileOpen = isMobile ? propSetProfileOpen : setLocalProfileOpen;
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -21,13 +26,10 @@ export const User = ({ closeMobileMenu }) => {
       position: "top-center",
       autoClose: 2000,
     });
-    closeMobileMenu();
+    if (isMobile) {
+      closeMobileMenu();
+    }
     navigate('/');
-  };
-
-  const [profileOpen, setProfileOpen] = useState(false);
-  const close = () => {
-    setProfileOpen(false);
   };
 
   const PublicFlo = "https://taara-backend.onrender.com/images/";
@@ -37,24 +39,27 @@ export const User = ({ closeMobileMenu }) => {
       <div className="profile">
         {user ? (
           <>
-            <button
-              className="img"
-              onClick={() => { 
-                setProfileOpen(!profileOpen);
-                console.log('Profile Open (inside User):', !profileOpen);
-              }}
-            >
-              <img
-                src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
-                alt=""
-              />
-            </button>
-            {profileOpen && (
+            {!showProfileOnly && (
+              <button
+                className="img"
+                onClick={() => {
+                  if (isMobile) {
+                    toggleProfileOnly(); // Use toggleProfileOnly for mobile
+                  } else {
+                    currentSetProfileOpen(!currentProfileOpen); // Toggle desktop profile dropdown
+                  }
+                }}
+              >
+                <img
+                  src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
+                  alt=""
+                />
+              </button>
+            )}
+            {/* Desktop Profile Dropdown */}
+            {currentProfileOpen && !isMobile && (
               <div className="openProfile boxItems">
-                <button className="closeProfileMenu" onClick={() => setProfileOpen(false)}>
-                  <FaTimes />
-                </button>
-                <Link to={"/account"} >
+                <Link to={"/account"} onClick={() => currentSetProfileOpen(false)}>
                   <div className="image">
                     <div className="img">
                       <img
@@ -68,35 +73,65 @@ export const User = ({ closeMobileMenu }) => {
                     </div>
                   </div>
                 </Link>
-                <button className="box" onClick={() => navigate("/create")} >
+                <button className="box" onClick={() => {navigate("/create"); currentSetProfileOpen(false);}} >
                   <RiImageAddLine className="icon" />
                   <h4>Create Post</h4>
                 </button>
-                <button className="box" onClick={() => navigate("/account")} >
+                <button className="box" onClick={() => {navigate("/account"); currentSetProfileOpen(false);}} >
                   <IoSettingsOutline className="icon" />
                   <h4>My Account</h4>
                 </button>
-                {/* <button className='box'>
-                  <BsBagCheck className='icon' />
-                  <h4>My Order</h4>
-                </button> */}
-                {/* <button className='box'>
-                  <AiOutlineHeart className='icon' />
-                  <h4>Wishlist</h4>
-                </button> */}
-                <button className="box" onClick={() => navigate("/help")} >
+                <button className="box" onClick={() => {navigate("/help"); currentSetProfileOpen(false);}} >
                   <GrHelp className="icon" />
                   <h4>Help</h4>
                 </button>
-                <button className="box" onClick={handleLogout}>
+                <button className="box" onClick={() => {handleLogout(); currentSetProfileOpen(false);}}>
                   <BiLogOut className="icon" />
                   {user && <h4>Log Out</h4>}
                 </button>
               </div>
             )}
+            {/* Mobile Profile Drawer Content */}
+            {showProfileOnly && isMobile && (
+                <div className="openProfile boxItems">
+                   <button className="closeProfileMenu" onClick={toggleProfileOnly}>
+                     <FaTimes />
+                   </button>
+                  <Link to={"/account"} onClick={closeMobileMenu}>
+                    <div className="image">
+                      <div className="img">
+                        <img
+                          src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
+                          alt=""
+                        />
+                      </div>
+                      <div className="text">
+                        <h4>{user.username}</h4>
+                        <label>India, Delhi</label>
+                      </div>
+                    </div>
+                  </Link>
+                  <button className="box" onClick={() => {navigate("/create"); closeMobileMenu();}} >
+                    <RiImageAddLine className="icon" />
+                    <h4>Create Post</h4>
+                  </button>
+                  <button className="box" onClick={() => {navigate("/account"); closeMobileMenu();}} >
+                    <IoSettingsOutline className="icon" />
+                    <h4>My Account</h4>
+                  </button>
+                  <button className="box" onClick={() => {navigate("/help"); closeMobileMenu();}} >
+                    <GrHelp className="icon" />
+                    <h4>Help</h4>
+                  </button>
+                  <button className="box" onClick={() => {handleLogout(); closeMobileMenu();}}>
+                    <BiLogOut className="icon" />
+                    {user && <h4>Log Out</h4>}
+                  </button>
+                </div>
+            )}
           </>
         ) : (
-          <Link to="/login">
+          <Link to="/login" onClick={closeMobileMenu}>
             <button>My Account</button>
           </Link>
         )}
