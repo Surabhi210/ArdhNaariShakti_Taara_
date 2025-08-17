@@ -230,6 +230,12 @@ header.active {
     display: block;
   }
 
+  /* Ensure nav-menu is hidden when profile drawer is active */
+  .nav-menu.active.profile-drawer-active {
+    display: none; 
+    pointer-events: none; /* Prevent clicks on underlying menu */
+  }
+
   .nav-menu ul {
     flex-direction: column;
     gap: 10px;
@@ -384,7 +390,7 @@ header.active {
   background-color: #ffa9cb; /* Match header background */
   transform: translateX(100%); /* Start off-screen to the right */
   transition: transform 0.3s ease-out; /* Smooth sliding animation */
-  z-index: 10002; /* Ensure it's above everything else */
+  z-index: 99999; /* Ensure it's above everything else */
   display: flex;
   flex-direction: column;
   padding: 20px; /* Add some padding inside the drawer */

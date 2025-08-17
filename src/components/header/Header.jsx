@@ -89,46 +89,44 @@ export const Header = () => {
         </div>
 
         {/* Navigation Menu */}
-        <nav ref={navRef} className={menuOpen ? "nav-menu active" : "nav-menu"}>
-          <ul>
-            {!showProfileOnly && (
-              <>
-                {nav.map((link) => (
-                  <li key={link.id}>
-                    {link.text === "taarabot" ? (
-                      <a
-                        href={link.url}
-                        className="nav-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={closeMenu}
-                      >
-                        {link.text}
-                      </a>
-                    ) : (
-                      <NavLink
-                        to={link.url}
-                        className={({ isActive }) =>
-                          isActive ? "nav-link active" : "nav-link"
-                        }
-                        onClick={closeMenu}
-                      >
-                        {link.text}
-                      </NavLink>
-                    )}
-                  </li>
-                ))}
-                <li className="mobile-account">
-                  <User closeMobileMenu={closeMenu} profileOpen={profileOpen} setProfileOpen={setProfileOpen} toggleProfileOnly={toggleProfileOnly} isMobile={isMobileView} />
+        {!showProfileOnly && (
+          <nav ref={navRef} className={menuOpen ? "nav-menu active" : "nav-menu"}>
+            <ul>
+              {nav.map((link) => (
+                <li key={link.id}>
+                  {link.text === "taarabot" ? (
+                    <a
+                      href={link.url}
+                      className="nav-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMenu}
+                    >
+                      {link.text}
+                    </a>
+                  ) : (
+                    <NavLink
+                      to={link.url}
+                      className={({ isActive }) =>
+                        isActive ? "nav-link active" : "nav-link"
+                      }
+                      onClick={closeMenu}
+                    >
+                      {link.text}
+                    </NavLink>
+                  )}
                 </li>
-              </>
-            )}
-          </ul>
-        </nav>
+              ))}
+              <li className="mobile-account">
+                <User closeMobileMenu={closeMenu} profileOpen={profileOpen} setProfileOpen={setProfileOpen} toggleProfileOnly={toggleProfileOnly} isMobile={isMobileView} />
+              </li>
+            </ul>
+          </nav>
+        )}
 
         {/* Profile Drawer (Mobile Only) */}
         {isMobileView && (
-          <div className={`profile-drawer ${showProfileOnly ? 'active' : ''}`}>
+          <div className={`profile-drawer ${showProfileOnly ? 'active' : ''}`} onClick={() => console.log('Clicked Profile Drawer Container')}>
             <User closeMobileMenu={closeMenu} profileOpen={profileOpen} setProfileOpen={setProfileOpen} toggleProfileOnly={toggleProfileOnly} showProfileOnly={showProfileOnly} isMobile={isMobileView} />
           </div>
         )}

@@ -97,7 +97,7 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
                    <button className="closeProfileMenu" onClick={toggleProfileOnly}>
                      <FaTimes />
                    </button>
-                  <Link to={"/account"} onClick={closeMobileMenu}>
+                  <Link to={"/account"} onClick={() => {console.log('Clicked My Account Link (Mobile Drawer)'); navigate("/account"); closeMobileMenu();}}>
                     <div className="image">
                       <div className="img">
                         <img
@@ -111,19 +111,19 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
                       </div>
                     </div>
                   </Link>
-                  <button className="box" onClick={() => {navigate("/create"); closeMobileMenu();}} >
+                  <button className="box" onClick={() => {console.log('Clicked Create Post (Mobile Drawer)'); navigate("/create"); closeMobileMenu();}} >
                     <RiImageAddLine className="icon" />
                     <h4>Create Post</h4>
                   </button>
-                  <button className="box" onClick={() => {navigate("/account"); closeMobileMenu();}} >
+                  <button className="box" onClick={() => {console.log('Clicked My Account Button (Mobile Drawer)'); navigate("/account"); closeMobileMenu();}} >
                     <IoSettingsOutline className="icon" />
                     <h4>My Account</h4>
                   </button>
-                  <button className="box" onClick={() => {navigate("/help"); closeMobileMenu();}} >
+                  <button className="box" onClick={() => {console.log('Clicked Help (Mobile Drawer)'); navigate("/help"); closeMobileMenu();}} >
                     <GrHelp className="icon" />
                     <h4>Help</h4>
                   </button>
-                  <button className="box" onClick={() => {handleLogout(); closeMobileMenu();}}>
+                  <button className="box" onClick={() => {console.log('Clicked Log Out (Mobile Drawer)'); handleLogout();}}>
                     <BiLogOut className="icon" />
                     {user && <h4>Log Out</h4>}
                   </button>
