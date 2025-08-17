@@ -84,7 +84,7 @@ export const Header = () => {
             setProfileOpen(false); // Close desktop profile if open
           }
           console.log('Menu Open:', !menuOpen, 'Profile Only:', showProfileOnly);
-        }}}>
+        }}>
           {menuOpen && !showProfileOnly ? <FaTimes /> : <FaBars />}
         </div>
 
