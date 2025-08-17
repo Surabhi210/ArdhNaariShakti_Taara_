@@ -35,7 +35,7 @@ export const Header = () => {
         </div>
 
         {/* Hamburger Icon */}
-        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="menu-icon" onClick={() => { setMenuOpen(!menuOpen); console.log('Menu Open:', !menuOpen); }}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
 
@@ -67,16 +67,15 @@ export const Header = () => {
                 )}
               </li>
             ))}
-            
             <li className="mobile-account">
-              <User />
+              <User closeMobileMenu={closeMenu} />
             </li>
           </ul>
         </nav>
 
        
         <div className="account flexCenter desktop-account">
-          <User />
+          <User closeMobileMenu={closeMenu} />
         </div>
       </div>
     </header>

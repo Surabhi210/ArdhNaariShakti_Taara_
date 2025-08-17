@@ -25,6 +25,8 @@ import { GoToTopButton } from "./components/goToTopButton/goToTopButton.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
 import ForgotPassword from './pages/login/ForgotPassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   //after login
@@ -59,6 +61,7 @@ const App = () => {
         <Footer />
         <GoToTopButton />
       </Router>
+      <ToastContainer position="top-center" autoClose={2000} />
     </>
   );
 };

@@ -6,12 +6,14 @@ import { GrHelp } from "react-icons/gr";
 import { BiLogOut } from "react-icons/bi";
 import { RiImageAddLine } from "react-icons/ri";
 import { Context } from "../../context/Context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const User = () => {
+export const User = ({ closeMobileMenu }) => {
   const { user, dispatch } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -19,6 +21,8 @@ export const User = () => {
       position: "top-center",
       autoClose: 2000,
     });
+    closeMobileMenu();
+    navigate('/');
   };
 
   const [profileOpen, setProfileOpen] = useState(false);
@@ -35,7 +39,10 @@ export const User = () => {
           <>
             <button
               className="img"
-              onClick={() => setProfileOpen(!profileOpen)}
+              onClick={() => { 
+                setProfileOpen(!profileOpen);
+                console.log('Profile Open (inside User):', !profileOpen);
+              }}
             >
               <img
                 src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
@@ -43,8 +50,11 @@ export const User = () => {
               />
             </button>
             {profileOpen && (
-              <div className="openProfile boxItems" onClick={close}>
-                <Link to={"/account"}>
+              <div className="openProfile boxItems">
+                <button className="closeProfileMenu" onClick={() => setProfileOpen(false)}>
+                  <FaTimes />
+                </button>
+                <Link to={"/account"} >
                   <div className="image">
                     <div className="img">
                       <img
@@ -58,13 +68,11 @@ export const User = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/create">
-                  <button className="box">
-                    <RiImageAddLine className="icon" />
-                    <h4>Create Post</h4>
-                  </button>
-                </Link>
-                <button className="box">
+                <button className="box" onClick={() => navigate("/create")} >
+                  <RiImageAddLine className="icon" />
+                  <h4>Create Post</h4>
+                </button>
+                <button className="box" onClick={() => navigate("/account")} >
                   <IoSettingsOutline className="icon" />
                   <h4>My Account</h4>
                 </button>
@@ -76,7 +84,7 @@ export const User = () => {
                   <AiOutlineHeart className='icon' />
                   <h4>Wishlist</h4>
                 </button> */}
-                <button className="box">
+                <button className="box" onClick={() => navigate("/help")} >
                   <GrHelp className="icon" />
                   <h4>Help</h4>
                 </button>
@@ -93,7 +101,6 @@ export const User = () => {
           </Link>
         )}
       </div>
-      <ToastContainer />
     </>
   );
 };
